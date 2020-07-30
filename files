@@ -1,0 +1,32 @@
+.
+[  82]  ./.git
+[ 414]  ./.git/hooks
+[ 478]  ./.git/hooks/applypatch-msg.sample
+[ 896]  ./.git/hooks/commit-msg.sample
+[3.2K]  ./.git/hooks/fsmonitor-watchman.sample
+[ 189]  ./.git/hooks/post-update.sample
+[ 424]  ./.git/hooks/pre-applypatch.sample
+[1.6K]  ./.git/hooks/pre-commit.sample
+[1.5K]  ./.git/hooks/prepare-commit-msg.sample
+[1.3K]  ./.git/hooks/pre-push.sample
+[4.8K]  ./.git/hooks/pre-rebase.sample
+[ 544]  ./.git/hooks/pre-receive.sample
+[3.5K]  ./.git/hooks/update.sample
+[  14]  ./.git/info
+[ 240]  ./.git/info/exclude
+[  16]  ./.git/objects
+[   0]  ./.git/objects/info
+[   0]  ./.git/objects/pack
+[  18]  ./.git/refs
+[   0]  ./.git/refs/heads
+[   0]  ./.git/refs/tags
+[  92]  ./.git/config
+[  73]  ./.git/description
+[  23]  ./.git/HEAD
+[  14]  ./src
+[  45]  ./src/main.rs
+[ 226]  ./Cargo.toml
+[   0]  ./files
+[   8]  ./.gitignore
+
+10 directories, 19 files
