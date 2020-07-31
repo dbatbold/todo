@@ -1,7 +1,9 @@
 use postgres::{Client, NoTls};
 
-pub fn connect() -> Result<Client, postgres::Error> {
-    let constr = "host=localhost user=todo";
-    let mut conn = Client::connect(constr, NoTls)?;
+use std::fs;
+
+pub fn connect(conf_file: &str) -> Result<Client, postgres::Error> {
+    let constr = fs::read_to_string(conf_file).unwrap();
+    let mut conn = Client::connect(&constr, NoTls)?;
     Ok(conn)
 }
