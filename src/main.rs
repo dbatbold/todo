@@ -1,7 +1,11 @@
 mod db;
+mod config;
 
 fn main() {
-    let mut conn = match db::connect("todo.conf") {
+    let config = config::load_config("./todo.conf");
+    let constr = config.get_must("postgres.constr");
+    
+    let mut conn = match db::connect(&constr) {
         Ok(c) => c,
         Err(e) => {
             println!("{:#?}", e);
