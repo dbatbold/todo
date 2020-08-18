@@ -1,18 +1,27 @@
-mod db;
+use tokio::runtime;
+
 mod config;
+mod db;
+mod server;
 
 fn main() {
-    let config = config::load_config("./todo.conf");
+    let config = config::load_file("./todo.conf");
     let constr = config.get_must("postgres.constr");
-    
-    let mut conn = match db::connect(&constr) {
+
+    let pg_client = match db::connect(&constr) {
         Ok(c) => c,
-        Err(e) => {
-            println!("{:#?}", e);
-            return;
-        },
+        Err(e) => panic!(e),
     };
 
-    let rows = conn.query("SELECT * FROM list", &[]).unwrap();
-    rows.iter().for_each(|row| println!("{}", row.get::<_, &str>(1)));
+    let mut web_server = server::WebServer::new().db(pg_client);
+
+    let mut rt = runtime::Builder::new()
+        .basic_scheduler()
+        .enable_io()
+        .build()
+        .unwrap();
+
+    let port = config.get_i32_or("server.port", 8000) as u16;
+
+    rt.block_on(web_server.serve(port));
 }

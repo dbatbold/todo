@@ -8,3 +8,5 @@ edition = "2018"
 
 [dependencies]
 postgres = "0.17.5"
+hyper = "0.13.7"
+tokio = { version = "0.2.22", features = ["io-driver"] }
